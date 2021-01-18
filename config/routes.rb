@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'home#top'
+  get    '/users',   to: 'users#index'
+  get    'users/:id' => 'users#show'
 end
