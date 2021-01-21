@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_19_045718) do
+ActiveRecord::Schema.define(version: 2021_01_19_133625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "icebreak_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["icebreak_id"], name: "index_comments_on_icebreak_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "icebreaks", force: :cascade do |t|
     t.string "name"
@@ -30,4 +40,6 @@ ActiveRecord::Schema.define(version: 2021_01_19_045718) do
     t.string "email"
   end
 
+  add_foreign_key "comments", "icebreaks"
+  add_foreign_key "comments", "users"
 end

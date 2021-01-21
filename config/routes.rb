@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   post"users/:id/update"=>"users#update"
   post "logout"=>"users#logout"
 
-  get "icebreak"=> "icebreaks#index"
-  get "icebreak/:id"=> "icebreaks#show"
+  get"icebreaks/new"=>"icebreaks#new"
+  get "icebreaks"=> "icebreaks#index"
+  get "icebreaks/:id"=> "icebreaks#show"
+  post "icebreaks/create"=>"icebreaks#create"
+  get "icebreaks/:id/edit"=>"icebreaks#edit"
+  post "icebreaks/:id/update"=>"icebreaks#update"
+  post "icebreaks/:id/destroy"=>"icebreaks#destroy"
   
 end
