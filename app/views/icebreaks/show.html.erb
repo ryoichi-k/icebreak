@@ -1,4 +1,29 @@
 <h2><%= @icebreak.name %></h2>
 <p><%= @icebreak.description %></p>
+<p>作成者：<%= @user.name %>さん</p>
 <%= link_to("編集", "/icebreaks/#{@icebreak.id}/edit")%>
 <%= link_to("削除", "/icebreaks/#{@icebreak.id}/destroy", {method:"post"})%>
+
+<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+  <div>
+    <a href="/users/<%= @icebreak.user.id %>"><%= c.user.email %></a>
+    <%= c.content %>
+    <hr>
+  </div>
+<% end %>
+
+
+<%= form_tag("/comments/create") do %>
+<p>このアイスブレイクのレビュー</p>
+<input name="content" value= "レビュー">
+<input type= "submit" value="レビューする">
+<% end %>
+
+
+<%#
+<%= form_with(model: [@icebreak, @comment], local: true) do |f| %>
+  <%#<%=f.text_area :content %>
+  <%#<%=f.hidden_field :icebreak_id, value: @icebreak.id %>
+  <%#<input type= "submit" value="コメントする">
+<% end %>

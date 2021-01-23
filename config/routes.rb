@@ -17,5 +17,12 @@ Rails.application.routes.draw do
   get "icebreaks/:id/edit"=>"icebreaks#edit"
   post "icebreaks/:id/update"=>"icebreaks#update"
   post "icebreaks/:id/destroy"=>"icebreaks#destroy"
+
+  post "comments/create"=>"comments#create"
   
+  #get "icebreaks/:id/comments" => "comments#index"
+
+  #resources :icebreaks do
+    #resources :comments
+  #end
 end

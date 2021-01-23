@@ -1,10 +1,15 @@
 class IcebreaksController < ApplicationController
-    def index
+    def index #アイスブレイク一覧
         @icebreaks = Icebreak.all
     end
 
-    def show
+    def show #アイスブレイク詳細
         @icebreak = Icebreak.find_by(id: params[:id])
+        @user = User.find_by(id: @icebreak.user_id) 
+        @comments = @icebreak.comments
+        @comment = Comment.new
+        #@comment = Comment.find_by(id: params[:id])
+        #@icebreak = Icebreak.find_by(id: @comment.icebreak_id)
     end
 
     def create
@@ -12,6 +17,7 @@ class IcebreaksController < ApplicationController
           name: params[:name],
           description: params[:description]
         )
+        @icebreak.user_id = @current_user.id
         @icebreak.save
         redirect_to("/icebreaks")
     end
