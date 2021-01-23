@@ -6,6 +6,7 @@ class IcebreaksController < ApplicationController
     def show #アイスブレイク詳細
         @icebreak = Icebreak.find_by(id: params[:id])
         @user = User.find_by(id: @icebreak.user_id) 
+        
         @comments = @icebreak.comments
         @comment = Comment.new
         #@comment = Comment.find_by(id: params[:id])

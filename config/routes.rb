@@ -20,7 +20,6 @@ Rails.application.routes.draw do
 
   post "comments/create"=>"comments#create"
   
-  #get "icebreaks/:id/comments" => "comments#index"
 
   #resources :icebreaks do
     #resources :comments
